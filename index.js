@@ -12,6 +12,13 @@ const conn = require('./db/conn')
 const Tought = require('./models/Tought')
 const User = require('./models/User')
 
+// Routes
+const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoutes = require('./routes/authRoutes')
+
+// Controller
+const ToughtController = require('./controllers/ToughtController')
+
 // Template Engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -24,6 +31,7 @@ app.use(
 
 app.use(express.json())
 
+// Session middleware
 app.use(
     session({
         name: "session",
@@ -47,6 +55,7 @@ app.use(flash())
 
 app.use(express.static('public'))
 
+// Session set
 app.use((req, res, next) => {
     if (req.session.userid) {
         res.locals.session = req.session
@@ -54,6 +63,12 @@ app.use((req, res, next) => {
 
     next()
 })
+
+// Routes
+app.use('/toughts', toughtsRoutes)
+app.use('/', authRoutes)
+
+app.get('/', ToughtController.showToughts)
 
 conn.sync().then(() => {
     app.listen(3000)

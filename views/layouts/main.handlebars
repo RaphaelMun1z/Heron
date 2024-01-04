@@ -4,11 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toughts</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Heron</title>
 </head>
 
 <body>
-    {{{body}}}
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="/img/logo.png" alt="Logo">
+            <p>Heron</p>
+        </div>
+        <div class="navigation-container">
+            <ul>
+                <li>
+                    <a href="/">
+                        Ver posts
+                        <i class="bi bi-postcard-heart"></i>
+                    </a>
+                </li>
+                {{#if session.userid}}
+                <li>
+                    <a href="/toughts/dashboard">
+                        Dashboard
+                        <i class="bi bi-mailbox-flag"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout">
+                        Sair
+                        <i class="bi bi-box-arrow-in-left"></i>
+                    </a>
+                </li>
+                {{else}}
+                <li>
+                    <a href="/login">
+                        Entrar
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/register">
+                        Registrar
+                        <i class="bi bi-person-plus"></i>
+                    </a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+    {{#if messages.message}}
+    <div class="flash-message">
+        {{messages.message}}
+    </div>
+    {{/if}}
+    <section class="main-container">
+        {{{body}}}
+    </section>
+    <footer>
+        <p>Rodapé</p>
+    </footer>
 </body>
 
 </html>
