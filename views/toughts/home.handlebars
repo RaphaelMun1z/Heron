@@ -1,9 +1,94 @@
 <aside class="tool-container">
-    a
+    <ul>
+        <form action="/" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Está buscando por algo?">
+            <input type="submit" value="Buscar" class="btn-submit">
+        </form>
+        <div>
+            {{#if session.userid}}
+            <li>
+                <a href="/">
+                    <i class="bi bi-house"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/toughts/dashboard">
+                    <i class="bi bi-mailbox-flag"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/logout" class="btn-logout">
+                    <i class="bi bi-door-open"></i>
+                    Sair
+                </a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/register" class="btn-register">
+                    <i class="bi bi-person-plus"></i>
+                    Registrar
+                </a>
+            </li>
+            <li>
+                <a href="/login" class="btn-login">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Entrar
+                </a>
+            </li>
+            {{/if}}
+        </div>
+    </ul>
 </aside>
 <div class="content">
-    <h1>Todos os pensamentos</h1>
+    <div class="filter">
+        <p>Ordenar por:</p>
+        <form action="/" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="new">
+            <button type="submit"><i class="bi-arrow-up"></i></button>
+        </form>
+        <form action="/" method="GET">
+            <input type="hidden" name="search" value="{{this.search}}">
+            <input type="hidden" name="order" value="old">
+            <button type="submit"><i class="bi-arrow-down"></i></button>
+        </form>
+        <a href="/">Limpar filtro</a>
+    </div>
+    {{#if search}}
+    <p class="searching-for">Pesquisando por: <span>{{search}}</span></p>
+        {{#if toughtsQty}}
+            <p><i>Foram encontrados <span>{{toughtsQty}}</span> resultados.</i></p>
+        {{else}}
+            <p><i>Não foram encontrados posts relacionados a sua pesquisa.</i></p>
+        {{/if}}
+    {{/if}}
+    {{#each toughts}}
+    <div class="post">
+        <div class="user">
+            <p>{{this.User.name}}</p>
+        </div>
+        <div class="text">
+            <i class="bi bi-quote first-quote"></i>
+            <p>
+                {{this.title}}
+            </p>
+            <i class="bi bi-quote second-quote"></i>
+        </div>
+        <div class="extra-info">
+            <div>
+                <i class="bi bi-calendar-check"></i>
+                <p>{{this.createdAt}}</p>
+            </div>
+            <div>
+                <i class="bi bi-arrow-clockwise"></i>
+                <p>{{this.updatedAt}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
 </div>
 <aside class="users-container">
-    b
+
 </aside>

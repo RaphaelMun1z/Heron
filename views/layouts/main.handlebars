@@ -20,33 +20,28 @@
             <ul>
                 <li>
                     <a href="/">
-                        Ver posts
-                        <i class="bi bi-postcard-heart"></i>
+                        <i class="bi bi-house"></i>
                     </a>
                 </li>
                 {{#if session.userid}}
                 <li>
                     <a href="/toughts/dashboard">
-                        Dashboard
                         <i class="bi bi-mailbox-flag"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="/logout">
-                        Sair
-                        <i class="bi bi-box-arrow-in-left"></i>
+                    <a href="/logout" class="logout-icon">
+                        <i class="bi bi-door-open"></i>
                     </a>
                 </li>
                 {{else}}
                 <li>
                     <a href="/login">
-                        Entrar
                         <i class="bi bi-box-arrow-in-right"></i>
                     </a>
                 </li>
                 <li>
                     <a href="/register">
-                        Registrar
                         <i class="bi bi-person-plus"></i>
                     </a>
                 </li>

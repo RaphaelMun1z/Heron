@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
 
 :root {
     --color-1: #393939;
@@ -84,7 +85,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    color: var(--color-1);
+    color: #fff;
 }
 
 .navbar>.navigation-container>ul>li>a {
@@ -98,9 +99,17 @@ body {
     gap: 7px;
 }
 
+.navbar>.navigation-container>ul>li>a:hover {
+    opacity: .5;
+}
+
 .navbar>.navigation-container>ul>li>a>i {
     font-size: 20pt;
     font-weight: 600;
+}
+
+.logout-icon {
+    color: #FF6347;
 }
 
 /*-----| BODY |------*/
@@ -111,26 +120,266 @@ body {
     width: 100%;
     height: fit-content;
     min-height: 50vh;
-    padding: 4em;
+    padding: 1em;
 }
 
 .main-container>.tool-container,
 .main-container>.users-container {
     position: relative;
     display: flex;
-    width: 20%;
-    height: 100vh;
+    flex: 0 1 20%;
+    height: fit-content;
     background-color: var(--color-4);
     border-radius: 30px;
+    overflow: hidden;
+}
+
+.tool-container {
+    padding: 3em 1em;
+    background-color: transparent !important;
+}
+
+.tool-container>ul,
+.tool-container>ul>div {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+}
+
+.search-form {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2em;
+}
+
+.search-form>input {
+    position: relative;
+    display: flex;
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1em;
+    font-size: 12pt;
+}
+
+.search-form>.btn-submit {
+    background-color: #48C39A;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.search-form>.btn-submit:hover {
+    opacity: .5;
+}
+
+.tool-container>ul>div>li>a {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    padding: 1em 1.5em;
+    border-radius: 10px;
+    font-size: 15pt;
+    gap: 20px;
+    font-weight: 400;
+    color: #242424;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.tool-container>ul>div>li>a:hover {
+    opacity: .5;
+}
+
+.btn-logout {
+    background-color: #FF6347 !important;
+    color: #fff !important;
+}
+
+.btn-logout i {
+    color: #fff !important;
+}
+
+.btn-login {
+    background-color: var(--color-5) !important;
+}
+
+.btn-register {
+    border: 2px solid var(--color-5) !important;
+}
+
+.tool-container>ul>li>a>i {
+    font-weight: 400;
+    font-size: 15pt;
+    color: #242424;
 }
 
 .main-container>.content {
     position: relative;
     display: flex;
-    width: calc(60% - 2em);
-    height: 100vh;
-    background-color: blue;
-    margin: 0 1em;
+    flex-wrap: wrap;
+    flex: 1 1 60%;
+    height: fit-content;
+    padding: 2em;
+    gap: 1em;
+}
+
+.content>.filter {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter>p {
+    font-size: 12pt;
+    color: #242424;
+    font-weight: 400;
+}
+
+.filter>form {
+    position: relative;
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+}
+
+.filter>form button {
+    background: transparent;
+    font-size: 12pt;
+    border: none;
+    cursor: pointer;
+}
+
+.filter>form>button>i {
+    border-radius: 10px;
+    padding: .5em;
+    background: var(--color-2);
+    color: #fff;
+}
+
+.filter>form button:hover {
+    opacity: .5;
+}
+
+.filter>a {
+    font-weight: 700;
+    color: var(--color-3);
+    border: 1px solid var(--color-3);
+    border-radius: 10px;
+    padding: .5em 1em;
+    margin-left: 20px;
+}
+
+.filter>a:hover {
+    opacity: .5;
+}
+
+.searching-for {
+    position: relative;
+    width: 100%;
+    font-size: 25pt;
+    font-weight: 300;
+}
+
+.searching-for span {
+    font-weight: 700;
+    font-size: 30pt;
+}
+
+.main-container>.content>.post {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 2em;
+    gap: 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-bottom: 2em;
+}
+
+.post>.user,
+.post>.text {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+}
+
+.post>.user>p {
+    font-size: 20pt;
+    color: #242424;
+    font-weight: 700;
+}
+
+.post>.text {
+    font-weight: 300;
+    padding: 3em 0;
+    color: #242424;
+    margin: 0 auto;
+}
+
+.post>.text>i {
+    position: absolute;
+    font-size: 30pt;
+    color: #242424;
+}
+
+.first-quote {
+    left: 0;
+    top: 0;
+}
+
+.second-quote {
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+.post>.extra-info,
+.post>.extra-info>div {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post>.extra-info {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.post>.extra-info>div {
+    gap: 10px;
+    align-items: center;
+    align-content: center;
+}
+
+.post>.extra-info>div>p,
+.post>.extra-info>div>i {
+    color: #242424;
+    font-weight: 300;
+    font-size: 10pt;
+    gap: 10px;
 }
 
 /*------| AUTH FORM |------*/
@@ -203,7 +452,7 @@ body {
     cursor: pointer;
 }
 
-.btn.back{
+.btn.back {
     background-color: var(--color-1);
 }
 
@@ -272,27 +521,113 @@ body {
     display: flex;
     width: fit-content;
     height: fit-content;
-    background-color: #FF6347;
+    background-color: var(--color-1);
     padding: 1em 3em;
     border-radius: 20px;
     color: #fff;
     font-weight: 500;
-    margin: 1em auto 2em auto;
+    margin: auto;
 }
 
 /*-------| DASHBOARD |-------*/
-.dashboard-container{
+.dashboard-container {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+    margin: 2em 4em;
+}
+
+.dashboard-container>h2 {
+    font-size: 35pt;
+    color: #242424;
+}
+
+.toughts-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    gap: 10px 1%;
+}
+
+.toughts-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    min-height: 300px;
+    flex: 0 1 24%;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 2em;
+}
+
+.toughts-card::before {
+    content: '"';
+    font-family: 'Island Moments', cursive;
+    color: #242424;
+    font-size: 200pt;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    top: -70px;
+    right: 30px;
+}
+
+.toughts-card>.title {
+    font-size: 20pt;
+    font-style: italic;
+    color: #242424;
+}
+
+.toughts-card>.actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     width: fit-content;
     height: fit-content;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn:hover {
+    opacity: .5;
+}
+
+.del {
+    background-color: #FF6347;
+}
+
+.edit {
+    background-color: var(--color-2);
+}
+
+.posts-container-title {
+    margin-top: 1em;
+}
+
+.empty-message-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
-.dashboard-container > h2{
-    font-size: 35pt;
+.empty-message-container>p {
+    font-size: 20pt;
     color: #242424;
 }
 
